@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.14
+ARG PYTHON_VERSION=3.13
 ARG DEBIAN_BASE=bookworm
 FROM python:${PYTHON_VERSION}-slim-${DEBIAN_BASE} AS base
 
@@ -8,7 +8,7 @@ COPY resources/core/nginx/security_headers.conf /etc/nginx/snippets/security_hea
 
 ARG WKHTMLTOPDF_VERSION=0.12.6.1-3
 ARG WKHTMLTOPDF_DISTRO=bookworm
-ARG NODE_VERSION=24.00.0
+ARG NODE_VERSION=24.0.0
 ENV NVM_DIR=/home/frappe/.nvm
 ENV PATH=${NVM_DIR}/versions/node/v${NODE_VERSION}/bin/:${PATH}
 
@@ -120,12 +120,6 @@ COPY ci/apps.json /opt/frappe/apps.json
 
 ARG FRAPPE_BRANCH=version-16
 ARG FRAPPE_PATH=https://github.com/frappe/frappe
-RUN echo "===== apps.json =====" && \
-    cat /opt/frappe/apps.json && \
-    echo "====================" && \
-    git ls-remote https://github.com/Mehariwamlake/payments.git && \
-    git ls-remote https://github.com/frappe/atlas.git && \
-    git ls-remote https://github.com/frappe/central.git
 RUN export APP_INSTALL_ARGS="--apps_path=/opt/frappe/apps.json" && \
   bench init ${APP_INSTALL_ARGS} \
     --frappe-branch=${FRAPPE_BRANCH} \

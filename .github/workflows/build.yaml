@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main
-
-
+      
+      
   workflow_dispatch:
-    
     
     inputs:
       image:
@@ -97,7 +96,7 @@ jobs:
       ### Using docker build
       - uses: actions/checkout@v5
         with:
-          repository: Mehariwamlake/techvision-erp
+          repository: Mehariwamlake/frappe-learning
           path: builds
       - name: Normalize owner to lowercase
         run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
@@ -111,6 +110,8 @@ jobs:
           tags: |
             ghcr.io/${{ env.OWNER_LC }}/${{ github.event.repository.name }}:${{ inputs.version || env.VERSION }}
             ghcr.io/${{ env.OWNER_LC }}/${{ github.event.repository.name }}:latest
+
+
           build-args: |
             "FRAPPE_PATH=${{ inputs.frappe-repo || env.FRAPPE_REPO }}"
             "FRAPPE_BRANCH=${{ inputs.frappe-version || env.FRAPPE_VERSION }}"

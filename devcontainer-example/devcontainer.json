@@ -33,7 +33,7 @@
             "driver": "MariaDB",
             "name": "MariaDB",
             "username": "root",
-            "password": "123",
+            "password": "admin",
             "database": "mysql"
           }
         ]

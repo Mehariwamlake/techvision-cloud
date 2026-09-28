@@ -7,7 +7,7 @@ if [[ -z "$BACKEND" ]]; then
 fi
 if [[ -z "$SOCKETIO" ]]; then
   echo "SOCKETIO defaulting to 0.0.0.0:9000"
-  export SOCKETIO=0.0.0.0:9000
+  export SOCKETIO=websocket:9000
 fi
 if [[ -z "$UPSTREAM_REAL_IP_ADDRESS" ]]; then
   echo "UPSTREAM_REAL_IP_ADDRESS defaulting to 127.0.0.1"
@@ -25,7 +25,7 @@ if [[ -z "$FRAPPE_SITE_NAME_HEADER" ]]; then
   # shellcheck disable=SC2016
   echo 'FRAPPE_SITE_NAME_HEADER defaulting to $host'
   # shellcheck disable=SC2016
-  export FRAPPE_SITE_NAME_HEADER=$host
+  export FRAPPE_SITE_NAME_HEADER='$host'
 fi
 
 if [[ -z "$PROXY_READ_TIMEOUT" ]]; then
