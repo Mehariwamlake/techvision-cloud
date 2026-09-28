@@ -120,6 +120,12 @@ COPY ci/apps.json /opt/frappe/apps.json
 
 ARG FRAPPE_BRANCH=version-16
 ARG FRAPPE_PATH=https://github.com/frappe/frappe
+RUN echo "===== apps.json =====" && \
+    cat /opt/frappe/apps.json && \
+    echo "====================" && \
+    git ls-remote https://github.com/Mehariwamlake/payments.git && \
+    git ls-remote https://github.com/frappe/atlas.git && \
+    git ls-remote https://github.com/frappe/central.git
 RUN export APP_INSTALL_ARGS="--apps_path=/opt/frappe/apps.json" && \
   bench init ${APP_INSTALL_ARGS} \
     --frappe-branch=${FRAPPE_BRANCH} \
