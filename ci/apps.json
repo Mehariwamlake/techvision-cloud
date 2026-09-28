@@ -1,0 +1,16 @@
+[
+  
+
+   {
+    "url": "https://github.com/Mehariwamlake/payments",
+    "branch": "develop"
+  },
+    {
+    "url": "https://github.com/frappe/atlas",
+    "branch": "main"
+  },
+    {
+    "url": "https://github.com/frappe/central",
+    "branch": "main"
+  }
+]
