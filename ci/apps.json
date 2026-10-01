@@ -8,10 +8,10 @@
 
     {
     "url": "https://github.com/frappe/atlas",
-    "branch": "develop"
+    "branch": "main"
   },
     {
     "url": "https://github.com/frappe/central",
-    "branch": "develop"
+    "branch": "main"
   }
 ]
